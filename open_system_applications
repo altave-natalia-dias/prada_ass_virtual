@@ -1,0 +1,16 @@
+# Feature 3: Open System Applications
+import os
+
+def open_application(application_name):
+    try:
+        os.system(f"start {application_name}.exe")  # Adjust for your system/application
+        speak(f"Opening {application_name}")
+    except Exception as e:
+        speak(f"Sorry, I encountered an error while opening {application_name}. {str(e)}")
+
+# Integrate Feature 3 into the main code
+# Add this line within the `while True` loop, alongside other if conditions
+# elif "open notepad" in query:
+#     open_application("notepad")
+# elif "open calculator" in query:
+#     open_application("calc")
