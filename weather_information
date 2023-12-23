@@ -1,0 +1,22 @@
+# Feature 1: Weather Information
+import requests
+
+def get_weather():
+    city = input("Enter the city name: ")  # You can use speech recognition here as well
+    api_key = "YOUR_OPENWEATHERMAP_API_KEY"  # Replace with your OpenWeatherMap API key
+
+    weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+    response = requests.get(weather_url)
+    weather_data = response.json()
+
+    if weather_data["cod"] == "404":
+        speak("City not found. Please check the city name.")
+    else:
+        temperature = round(weather_data["main"]["temp"] - 273.15, 2)  # Convert to Celsius
+        description = weather_data["weather"][0]["description"]
+        speak(f"The current temperature in {city} is {temperature} degrees Celsius with {description}.")
+
+# Integrate Feature 1 into the main code
+# Add this line within the `while True` loop, alongside other if conditions
+# elif "weather information" in query:
+#     get_weather()
