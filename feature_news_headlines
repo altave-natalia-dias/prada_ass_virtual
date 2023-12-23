@@ -1,0 +1,20 @@
+# Feature 2: News Headlines
+from newsapi import NewsApiClient
+
+def get_news_headlines():
+    api_key_news = "YOUR_NEWSAPI_OR_ANY_OTHER_NEWS_API_KEY"  # Replace with your News API key
+
+    newsapi = NewsApiClient(api_key=api_key_news)
+    headlines = newsapi.get_top_headlines(country='us', language='en')
+
+    if headlines['status'] == 'ok':
+        articles = headlines['articles']
+        for i, article in enumerate(articles[:5]):
+            speak(f"Headline {i + 1}: {article['title']}")
+    else:
+        speak("Sorry, I couldn't fetch the latest news at the moment.")
+
+# Integrate Feature 2 into the main code
+# Add this line within the `while True` loop, alongside other if conditions
+# elif "news headlines" in query:
+#     get_news_headlines()
